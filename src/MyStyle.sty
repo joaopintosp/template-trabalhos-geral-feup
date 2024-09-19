@@ -1,0 +1,136 @@
+%! suppress = MissingLabel
+%! suppress = EscapeHashOutsideCommand
+%%% O estilo predefinido para os meus trabalhos da faculdade
+
+% Pacotes que utilizo sempre num trabalho
+\RequirePackage[pt]{datetime2}
+\RequirePackage{mathptmx}
+\RequirePackage{csquotes}
+\RequirePackage{slantsc}
+\RequirePackage[version=4]{mhchem}
+\RequirePackage{amsmath}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{lipsum, bookmark}
+\RequirePackage{booktabs, array, multirow, multicol, tabularx, subcaption, hhline, adjustbox}
+\RequirePackage{lmodern}
+\RequirePackage{float}
+\RequirePackage{enumitem, siunitx}
+\RequirePackage{fontspec}   \setmainfont{Calibri}
+\RequirePackage{graphicx}   \graphicspath{{imagens/}}
+
+% Espaçamento e indentação entre linhas e parágrafos
+\RequirePackage{indentfirst}
+\RequirePackage{setspace}
+\RequirePackage{emptypage}
+\onehalfspacing
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{6pt}
+\newcommand{\newpara}
+        {
+        \vskip 6pt
+        }
+
+\definecolor{engineering}{rgb}{0.549, 0.176, 0.098}
+
+% Margens da página
+\RequirePackage[outer=25mm,inner=35mm,vmargin=20mm,includehead,includefoot,headheight=15pt]{geometry}
+\setlength{\headheight}{14pt}
+
+% Cabeçalho e rodapé
+\RequirePackage{fancyhdr}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancypagestyle{plain}{%    Primeira página de capítulos 
+    \fancyhf{} 
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt} 
+    \renewcommand{\footrulewidth}{0pt} % Adicionar Linha no rodapé (Predefinição 0pt)
+}
+\fancypagestyle{fancy}{%    Todas as outras páginas
+    \fancyhf{} 
+    \fancyhead[L]{\textit{\leftmark}}
+    \fancyhead[R]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+}
+ \pagestyle{fancy}  % Para aplicar o estilo
+
+%% Cor das hiperligações (Branco = não visíveis)
+\hypersetup{
+    pdfborder=0 0 0
+    }
+
+% Cor das ligações (Cor de Engenharia FEUP)
+% \hypersetup{%
+%     plainpages=false,
+%     pdfpagelayout=SinglePage,
+%     bookmarksopen=false,
+%     bookmarksnumbered=true,
+%     breaklinks=true,
+%     linktocpage,
+%     colorlinks=true,     %% 2021-07-20: Use "engineering" color for links
+%     linkcolor=blue, % engeneering
+%     urlcolor=blue, % engeneering
+%     filecolor=blue, % engeneering
+%     citecolor=blue, % engeneering
+%     allcolors=blue % engeneering
+%   }
+
+%\hypersetup{%
+%    plainpages=false,
+%    pdfpagelayout=SinglePage,
+%    bookmarksopen=false,
+%    bookmarksnumbered=true,
+%    breaklinks=true,
+%    linktocpage,
+%    colorlinks=true,     %% 2021-07-20: Use "engineering" color for links
+%    linkcolor=engineering,
+%    urlcolor=engineering,
+%    filecolor=engineering,
+%    citecolor=engineering,
+%    allcolors=engineering
+%  }
+
+
+% Se utilizar o pacote cleveref para referenciar figuras/tabelas/equações - Português
+\RequirePackage[capitalize, brazilian]{cleveref}
+\Crefname{equation}{Equação}{Equações}
+\Crefname{table}{Tabela}{Tabelas}
+\Crefname{figure}{Figura}{Figuras}
+\crefname{chapter}{capítulo}{capítulos}
+\Crefname{chapter}{Capítulo}{Capítulos}
+\crefname{section}{secção}{secções}
+\Crefname{section}{Secção}{Secções}
+
+\addto\extrasportuguese{%
+  \renewcommand{\subsectionautorefname}{Subsecção}%
+  \renewcommand{\sectionautorefname}{Secção}%
+}
+
+% Afastamento entre células das tabelas e estilo de legendas (tanto de tabelas como figuras) alternativo
+\RequirePackage{caption}
+\captionsetup[table]{skip=3pt}
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.25}
+\DeclareCaptionFormat{custom}
+{%
+    \small\textbf{#1#2}\emph{ #3}   % Legenda das figuras/tabelas 
+}
+\captionsetup{format=custom}
+\newcommand{\source}[1]{\caption*{\textbf{\small{\emph{Fonte:}}} {#1}} }   % Fonte das figuras/tabelas
+
+% Para alterar a numeração das secções para 1.1. (Default = 1.1)
+\RequirePackage[explicit,compact]{titlesec}
+\titleformat{\chapter}[block]
+    {\bfseries\huge}{\filright\huge\thechapter.}{1ex}{\huge\filright #1}
+    \titlespacing*{\chapter}{0pt}{-30pt}{30pt}
+\titlelabel{\thetitle.\quad}
+
+% Escrever graus centigrados mais facilmente
+\newcommand{\graus}{$^{\circ}$C}
+
+% Para personalizar tabelas
+% \RequirePackage[table]{xcolor}
+% \newcolumntype{S}{>{\columncolor{black!20}} c}
+% \newcolumntype{Y}{>{\columncolor{yellow!20}} c}
+% \renewcommand{\arrayrulewidth}{0.2mm}
+% \newcolumntype{R}{>{\columncolor{red!30}} c}
